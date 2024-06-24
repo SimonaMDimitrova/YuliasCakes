@@ -4,13 +4,15 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Dashboard from './components/Dashboard';
 import { ToastContainer } from 'react-toastify';
 import './App.scss';
+import { Button, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
+
+import logo from './logo.svg';
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -36,7 +38,7 @@ const AppBar = styled(MuiAppBar, {
 const defaultTheme = createTheme({
   palette: {
     primary: {
-      main: '#f7ebed',
+      main: '#FFFFFF',
     },
     text: {
       primary: '#121212',
@@ -46,25 +48,32 @@ const defaultTheme = createTheme({
 
 export default function App() {
   const [open, setOpen] = React.useState(true);
+  const navItems = ['Home', 'About', 'Contact'];
 
   return (
     <React.Fragment>
       <ThemeProvider theme={defaultTheme}>
         <Box sx={{ display: 'flex' }}>
           <CssBaseline />
-          <AppBar position="absolute" open={open}>
-            <Toolbar
-              sx={{
-                pr: '24px', // keep right padding when drawer closed
-              }}
-            >
-              <Typography
-                component="h1"
-                variant="h6"
-                color="inherit"
-                noWrap              >
-                Тортите на Юле
-              </Typography>
+          <AppBar position="fixed">
+            <Toolbar>
+
+              <Box sx={{ flexGrow: 1 }}>
+                <a href="/" className="App-logo"><img src={logo} className="app-logo" /></a>
+
+                <Button color="inherit" className="app-order-now-button">ПОРЪЧАЙ СЕГА</Button>
+              </Box>
+              
+              <List className="app-list">
+                {navItems.map((item) => (
+                  <ListItem key={item} disablePadding>
+                    <ListItemButton sx={{ textAlign: 'center' }}>
+                      <ListItemText primary={item} />
+                    </ListItemButton>
+                  </ListItem>
+                ))}
+              </List>
+              
             </Toolbar>
           </AppBar>
           <Box
