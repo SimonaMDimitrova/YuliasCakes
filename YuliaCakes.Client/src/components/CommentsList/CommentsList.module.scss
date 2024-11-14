@@ -1,0 +1,12 @@
+.commentsListWrapper {
+    overflow: auto;
+}
+
+.commentsList {
+    display: flex;
+    gap: 1em;
+    padding: 1em 0;
+    flex-wrap: nowrap;
+    overflow: auto;
+    width: max-content;
+}
