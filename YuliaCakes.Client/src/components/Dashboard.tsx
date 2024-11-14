@@ -4,6 +4,7 @@ import Gallery from 'react-photo-gallery';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
 import './Dashboard.css';
+import CommentsList from './CommentsList/CommentsList';
 
 type Photo = {
   src: string;
@@ -66,10 +67,12 @@ const Dashboard: React.FC = () => {
       <Gallery photos={photos} onClick={openLightbox} />
 
       <p className="summary">
-        Тортите на Юлето е скромен проект на една сладкарка, който през деня работи като QA, но след работа създава невероятни торти за семейството, приятелите и колегите си.
+        Тортите на Юлето е скромен проект на една сладкарка, която през деня работи като QA, но след работа създава невероятни торти за семейството, приятелите и колегите си.
         Със страст към сладкарството и усет за дизайн, Юлето съчетава креативността и вкуса, за да изработва зашеметяващи торти, които със сигурност ще впечатлят.
         От елегантни сватбени торти до вкусни торти за рождени дни, всяка торта е направена с най-добрите съставки и личен щрих.
       </p>
+
+      <CommentsList />
 
       <form onSubmit={handleCommentSubmit} style={{ marginTop: '20px', textAlign: 'center' }}>
           <div>
@@ -86,6 +89,7 @@ const Dashboard: React.FC = () => {
             <textarea
               placeholder="Вашият коментар"
               value={comment}
+              maxLength={100}
               onChange={(e) => setComment(e.target.value)}
               required
               style={{ padding: '10px', margin: '5px', width: '30rem', height: '100px', borderRadius: '5px', border: '1px solid #ccc' }}

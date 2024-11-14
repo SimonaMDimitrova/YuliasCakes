@@ -16,3 +16,24 @@
   flex-direction: row;
   text-transform: uppercase;
 }
+
+/* For WebKit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e6e6e6;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background-color: #e94c9a;
+  border: 2px solid #e6e6e6;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #e94c9a #e6e6e6;
+}
