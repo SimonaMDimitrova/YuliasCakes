@@ -4,7 +4,7 @@ import Gallery from 'react-photo-gallery';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
 import './Dashboard.css';
-import CommentsList from './CommentsList/CommentsList';
+import CommentsSection from './Comments/CommentsSection';
 
 type Photo = {
   src: string;
@@ -38,9 +38,6 @@ const photos: Photo[] = [
 const Dashboard: React.FC = () => {
   const [lightboxIsOpen, setLightboxIsOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(0);
-  const [comments, setComments] = useState<{ name: string; comment: string }[]>([]);
-  const [name, setName] = useState('');
-  const [comment, setComment] = useState('');
 
   const openLightbox = (event: any, { photo, index }: any) => {
     setCurrentImage(index);
@@ -49,15 +46,6 @@ const Dashboard: React.FC = () => {
 
   const closeLightbox = () => {
     setLightboxIsOpen(false);
-  };
-
-  const handleCommentSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (name && comment) {
-      setComments([...comments, { name, comment }]);
-      setName('');
-      setComment('');
-    }
   };
 
   return (
@@ -72,50 +60,7 @@ const Dashboard: React.FC = () => {
         От елегантни сватбени торти до вкусни торти за рождени дни, всяка торта е направена с най-добрите съставки и личен щрих.
       </p>
 
-      <CommentsList />
-
-      <form onSubmit={handleCommentSubmit} style={{ marginTop: '20px', textAlign: 'center' }}>
-          <div>
-            <input
-              type="text"
-              placeholder="Вашето име"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-              style={{ padding: '10px', margin: '5px', width: '30rem', borderRadius: '5px', border: '1px solid #ccc' }}
-            />
-          </div>
-          <div>
-            <textarea
-              placeholder="Вашият коментар"
-              value={comment}
-              maxLength={100}
-              onChange={(e) => setComment(e.target.value)}
-              required
-              style={{ padding: '10px', margin: '5px', width: '30rem', height: '100px', borderRadius: '5px', border: '1px solid #ccc' }}
-            />
-          </div>
-          <button type="submit" style={{ padding: '10px 20px', borderRadius: '5px', border: 'none', backgroundColor: '#E94C9A', color: '#fff', cursor: 'pointer' }}>
-            Изпрати коментар
-          </button>
-        </form>
-
-        <div className="comments-container" style={{ marginTop: '20px', textAlign: 'center' }}>
-          {comments.length > 0 && <h3>Коментари:</h3>}
-          <div className="comments-carousel">
-            {comments.map((c, index) => (
-              <div key={index} className="comment-card">
-                <div className="avatar">
-                  <img src="/images/icons/default-avatar.png" alt="Avatar" />
-                </div>
-                <div className="comment-content">
-                  <strong>{c.name}</strong>
-                  <p>{c.comment}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+      <CommentsSection />
 
       {lightboxIsOpen && (
         <Lightbox
