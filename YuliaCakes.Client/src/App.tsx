@@ -13,6 +13,7 @@ import './App.scss';
 import { Button, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 
 import logo from './logo.svg';
+import Footer from './components/Footer/Footer';
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -94,6 +95,9 @@ export default function App() {
                 <Grid item xs={12}>
                   <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
                     <Dashboard />
+                  </Paper>
+                  <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                    <Footer />
                   </Paper>
                 </Grid>
               </Grid>

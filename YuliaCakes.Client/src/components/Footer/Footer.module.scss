@@ -1,0 +1,39 @@
+.footer {
+    font-family: 'Montserrat';
+    font-size: 0.8em;
+    padding: 3em;
+}
+
+.contactsWrapper {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+
+    .phone {
+        a {
+            color: #E94C9A;
+            text-decoration: none;
+        }
+    
+        a:hover {
+            color: #E94C9A; // todo: add smth here idk what yet
+        }
+    }
+
+    .facebook {
+        a {
+            color: #1877F2;
+            text-decoration: none;
+        }
+    
+        a:hover {
+            color: #1877F2; // todo: add smth here idk what yet
+        }
+    }
+}
+
+.copyrights {
+    text-align: center;
+    font-weight: 600;
+    margin-top: 1em;
+}
