@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace API.Controllers
 {
@@ -6,28 +8,26 @@ namespace API.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+        IMongoDatabase db;
 
-        private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(IMongoClient mongoClient)
         {
-            _logger = logger;
+            this.db = mongoClient.GetDatabase("sample_mflix");
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        [HttpGet("ping")]
+        public IActionResult Ping()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            try
             {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+                var result = db.GetCollection<BsonDocument>("comments");
+                Console.WriteLine("Pinged your deployment. You successfully connected to MongoDB!");
+                return Ok("Ping successful!");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Ping failed: {ex.Message}");
+            }
         }
     }
 }

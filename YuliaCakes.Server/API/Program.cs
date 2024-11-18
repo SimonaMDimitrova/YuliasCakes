@@ -1,4 +1,15 @@
+using MongoDB.Driver;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// MongoDB Configuration
+string connectionString = builder.Configuration.GetConnectionString("MongoDb");
+var settings = MongoClientSettings.FromConnectionString(connectionString);
+settings.ServerApi = new ServerApi(ServerApiVersion.V1);
+var mongoClient = new MongoClient(settings);
+
+// Register the MongoClient in the DI container
+builder.Services.AddSingleton<IMongoClient>(mongoClient);
 
 // Add services to the container.
 
