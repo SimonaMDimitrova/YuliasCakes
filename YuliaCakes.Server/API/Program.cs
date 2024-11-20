@@ -1,4 +1,5 @@
 using MongoDB.Driver;
+using Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,7 @@ var mongoClient = new MongoClient(settings);
 builder.Services.AddSingleton<IMongoClient>(mongoClient);
 
 // Add services to the container.
+builder.Services.AddTransient<ICommentsService, CommentsService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
