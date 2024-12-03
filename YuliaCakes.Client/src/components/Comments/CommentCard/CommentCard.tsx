@@ -4,8 +4,9 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import styles from './CommentCard.module.scss'
+import Comment from '../../../models/comment';
 
-export default function CommentCard() {
+export default function CommentCard(props: any) {
   return (
     <Card sx={{ display: 'flex', width: '400px', height: '120px' }}>
       <CardMedia
@@ -18,7 +19,7 @@ export default function CommentCard() {
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <CardContent sx={{ flex: '1 0 auto', textAlign: 'left' }}>
           <Typography component="div" variant="h6" className={styles.commentorName}>
-            Симона Димитрова
+            {props.author}
           </Typography>
           <Typography
             variant="subtitle1"
@@ -26,7 +27,7 @@ export default function CommentCard() {
             sx={{ color: 'text.secondary' }}
             className={styles.commentContent}
           >
-            Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incididunt ut labore et d.
+            {props.content}
           </Typography>
         </CardContent>
       </Box>

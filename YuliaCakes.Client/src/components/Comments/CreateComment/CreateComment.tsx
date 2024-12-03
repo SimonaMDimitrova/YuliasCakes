@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 
 export default function CreateComment() {
-    const [comments, setComments] = useState<{ name: string; comment: string }[]>([]);
     const [comment, setComment] = useState(''); // todo: set it in commentsSection component
     const [name, setName] = useState('');
 
     const handleCommentSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (name && comment) {
-          setComments([...comments, { name, comment }]);
+        //   setComments([...comments, { name, comment }]);
           setName('');
           setComment('');
         }
