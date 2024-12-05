@@ -18,6 +18,7 @@ export default function CommentsSection() {
     return (
         <React.Fragment>
             <Title>Коментари</Title>
+
             <div className={styles.commentsListWrapper}>
                 <div className={styles.commentsList}>
                     {comments.map((comment: Comment) => (

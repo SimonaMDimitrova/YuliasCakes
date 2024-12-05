@@ -11,10 +11,9 @@ export default function CommentCard(props: any) {
     <Card sx={{ display: 'flex', width: '400px', height: '120px' }}>
       <CardMedia
         component="img"
-        sx={{ width: 150, height: 150 }}
         image="https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png"
         alt="Commentor image"
-        className={styles.commentorImageContainer}
+        className={styles.commentorImage}
       />
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <CardContent sx={{ flex: '1 0 auto', textAlign: 'left' }}>
