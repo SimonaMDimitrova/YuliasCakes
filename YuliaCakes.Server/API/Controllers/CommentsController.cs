@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using DTOs;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class CommentsController : ControllerBase
 {
     private readonly ICommentsService commentsService;

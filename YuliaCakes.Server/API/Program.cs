@@ -9,6 +9,16 @@ var settings = MongoClientSettings.FromConnectionString(connectionString);
 settings.ServerApi = new ServerApi(ServerApiVersion.V1);
 var mongoClient = new MongoClient(settings);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000") // Specify your frontend's URL
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 // Register the MongoClient in the DI container
 builder.Services.AddSingleton<IMongoClient>(mongoClient);
 
@@ -32,6 +42,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors("AllowSpecificOrigin");
 
 app.MapControllers();
 
