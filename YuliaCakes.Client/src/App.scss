@@ -37,3 +37,12 @@
   scrollbar-width: thin;
   scrollbar-color: #e94c9a #e6e6e6;
 }
+
+img {
+  height: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.05);
+}

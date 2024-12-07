@@ -7,13 +7,14 @@ import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import Dashboard from './components/Dashboard';
 import { ToastContainer } from 'react-toastify';
 import './App.scss';
 import { Button, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 
 import logo from './logo.svg';
 import Footer from './components/Footer/Footer';
+import Dashboard from './pages/Dashboard/Dashboard';
+import Header from './components/Header/Header';
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -94,9 +95,8 @@ export default function App() {
               <Grid container spacing={3}>
                 <Grid item xs={12}>
                   <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                    <Header />
                     <Dashboard />
-                  </Paper>
-                  <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
                     <Footer />
                   </Paper>
                 </Grid>
