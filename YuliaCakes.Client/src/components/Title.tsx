@@ -1,39 +1,32 @@
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
-import { styled } from '@mui/system';
+import { display, styled } from '@mui/system';
 
 interface TitleProps {
   children?: React.ReactNode;
 }
 
 const StyledTitle = styled(Typography)(({ theme }) => ({
-  fontSize: '3rem',
-  fontWeight: 700,
+  fontSize: '2,5rem',
+  fontWeight: 600,
+  fontFamily: 'Montserrat',
   textAlign: 'center',
-  color: theme.palette.primary.main,
+  color: '#7BC3CA',
   textTransform: 'uppercase',
-  letterSpacing: '3px',
   position: 'relative',
-  marginBottom: '20px',
-
-  textShadow: '2px 2px 5px rgba(0, 0, 0, 0.4)',
+  marginTop: '36px',
 
   '&::after': {
     content: '""',
-    position: 'absolute',
-    left: '50%',
-    bottom: '-10px',
-    width: '100%',
-    height: '6px',
+    width: '15%',
+    height: '4px',
     backgroundColor: '#E94C9A',
+    display: 'block',
+    position: 'relative',
+    left: '50%',
     transform: 'translateX(-50%)',
-    borderRadius: '3px'
-  },
-
-  '&:hover': {
-    textShadow: '3px 3px 10px rgba(0, 0, 0, 0.6)',
-    cursor: 'pointer',
-  },
+    marginTop: '10px'
+  }
 }));
 
 export default function Title(props: TitleProps) {

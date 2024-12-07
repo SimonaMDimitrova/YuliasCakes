@@ -1,5 +1,5 @@
 import * as React from 'react';
-import CakeDetailsModel from '../models/cake-details';
+import CakeDetailsModel from '../../models/cake-details';
 
 interface CakeDetailProps {
   children?: React.ReactNode;
