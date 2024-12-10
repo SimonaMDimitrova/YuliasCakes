@@ -6,11 +6,11 @@ export default function Header() {
     return (
         <React.Fragment>
 
-            <div className={styles.logoWrapper}>
-                <img src="/images/resources/header.jpg" />
+            <div className={styles.logoWrapper} id="Home">
+                <img src="/images/resources/logo.jpg" />
             </div>
 
-            <div className={styles.aboutUsSection}>
+            <div className={styles.aboutUsSection} id="About">
                 <p className={styles.summary}>
                     <h4>За нас</h4>
                     <div>

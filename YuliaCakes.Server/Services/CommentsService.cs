@@ -19,9 +19,11 @@ public class CommentsService : ICommentsService
         var collection = GetCommentsCollection();
 
         var dbComments = await collection.Find(_ => true)
-                                       .ToListAsync();
+                                         .ToListAsync();
 
-        var commentsDTO = dbComments.Select(x => new CommentDTO
+        var commentsDTO = dbComments.ToList()
+                                    .OrderByDescending(x => x.CreatedOn)
+                                    .Select(x => new CommentDTO
                                     {
                                         Id = x.Id,
                                         Author = x.Author,

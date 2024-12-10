@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import styles from './CommentCard.module.scss'
-import Comment from '../../../models/comment';
+import Comment from '../../../models/comment.model';
 
 export default function CommentCard(props: any) {
   return (

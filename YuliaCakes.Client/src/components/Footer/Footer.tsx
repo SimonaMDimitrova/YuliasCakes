@@ -11,7 +11,7 @@ import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 
 export default function Footer() {
     return ( 
-        <React.Fragment>
+        <div id="Contact">
             <Box className={styles.footer}>
                 <Box className={styles.contactsWrapper}>
                     <Box className={styles.phone}>
@@ -31,6 +31,6 @@ export default function Footer() {
                     <FontAwesomeIcon icon={faCopyright} /> 2024 Yulia's Cakes. All copy rights reseived.
                 </Box>
             </Box>
-        </React.Fragment>
+        </div>
     );
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
@@ -48,9 +48,25 @@ const defaultTheme = createTheme({
   },
 });
 
+const navItems = [
+  { id: 'Home', label: 'Home' },
+  { id: 'About', label: 'About' },
+  { id: 'Gallery', label: 'Gallery' },
+  { id: 'Comments', label: 'Comments' },
+  { id: 'Contact', label: 'Contact' },
+];
+
 export default function App() {
   const [open, setOpen] = React.useState(true);
-  const navItems = ['Home', 'About', 'Contact'];
+  const [activeSection, setActiveSection] = useState('Home');
+
+  const handleNavClick = (id: string) => {
+    setActiveSection(id);
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' }); // Smooth scroll to section
+    }
+  };
 
   return (
     <React.Fragment>
@@ -68,9 +84,18 @@ export default function App() {
               
               <List className="app-list">
                 {navItems.map((item) => (
-                  <ListItem key={item} disablePadding>
-                    <ListItemButton sx={{ textAlign: 'center' }}>
-                      <ListItemText primary={item} />
+                  <ListItem key={item.id} disablePadding>
+                    <ListItemButton
+                      component="a"
+                      href={`#${item.id}`}
+                      sx={{
+                        textAlign: 'center',
+                        backgroundColor: activeSection === item.id ? '#eceff1' : 'transparent',
+                        color: activeSection === item.id ? '#E94C9A' : 'inherit',
+                      }}
+                      onClick={() => handleNavClick(item.id)}
+                    >
+                      <ListItemText primary={item.label} />
                     </ListItemButton>
                   </ListItem>
                 ))}

@@ -50,7 +50,7 @@ export default function GallerySection() {
 
     return (
         <React.Fragment>
-            <div className={styles.galleryContainer}>
+            <div className={styles.galleryContainer} id="Gallery">
                 <Gallery photos={photos} onClick={openLightbox} />
 
                 {lightboxIsOpen && (
